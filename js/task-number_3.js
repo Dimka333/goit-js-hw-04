@@ -1,18 +1,19 @@
 "use strict"
 
-function add(n) {
-    let result = 0;
-
-    function addToResult(num) {
-        if (num === undefined) return result;
-
-        result += num;
-
-        return addToResult;
+const inventr = {
+    items: ['nog', 'luk'],
+    add(itemName) {
+        console.log(`Накидываю тебе ${itemName} в инвентарь, бомж.`);
+        this.items.push(itemName);
     }
-    return addToResult(n);
-}
+};
 
-console.log(add());
+console.log(inventr.items);
 
-console.log(add(2)(5)(7)());
+const invokeblabla = function (itemName, action) {
+    console.log(`Что то там дейстие с ${itemName}`);
+    action(itemName);
+};
+
+invokeblabla('Mech', .bind(inventr).add);
+console.log(inventr.items);
